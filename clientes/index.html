@@ -117,45 +117,212 @@ img{max-width:100%;display:block}
   .clients-section{padding:0 1.25rem 60px}
 }
 
-/* === EQUALIZE LOGO VISUAL WEIGHT === */
-/* Enable overflow hidden for scaling transforms */
+/* === LOGO VISUAL BALANCE — ART-DIRECTED PER-LOGO === */
+/* Goal: optical equilibrium across 54 brand logos of wildly varying
+   aspect ratios, canvas sizes, and internal white margins.
+   Each override is hand-sized so, row after row, no logo visually
+   dominates or gets lost. */
+
 .logo-img-wrap { overflow: hidden; }
 
-/* Per-logo scale transforms to equalize visual size */
+/* ── BASE PADDING TIGHTENED ── */
+/* One fewer pixel of margin gives more room to the actual brand marks */
+.logo-img-wrap { padding: 6px;  transition: padding .15s; }
+@media(max-width:640px){ .logo-img-wrap { padding: 4px; } }
 
-/* ---- WHITESPACE-HEAVY LOGOS (large transparent margins) ---- */
-img[alt="TV Globo"] { transform: scale(2.4); }
-img[alt="Conmebol TV"] { transform: scale(1.9); }
-img[alt="Live Mode"] { transform: scale(1.6); }
-img[alt="Maximum"] { transform: scale(1.5); }
+/* ── CATEGORY A: CIRCULAR / WHITESPACE-HEAVY ── */
+/* The brand mark is centred inside a large empty canvas. Scaling the
+   image element crops the transparent edges but leaves the mark intact. */
 
-/* ---- VERY WIDE LOGOS (appear as thin strips) ---- */
-img[alt="Rodobens"] { transform: scale(3.0); }
-img[alt="PokerStars"] { transform: scale(2.8); }
-img[alt="SporTV"] { transform: scale(2.4); }
-img[alt="YouTube"] { transform: scale(2.2); }
-img[alt="PepsiCo"] { transform: scale(2.0); }
-img[alt="ESPN"] { transform: scale(1.9); }
+img[alt="TV Globo"] {
+  /* 900×900 square where the globe icon occupies ~280px diameter.
+     Scale 1.488× – 7% smaller than before (1.6). */
+  transform: scale(1.488);
+}
 
-/* ---- MODERATELY WIDE LOGOS ---- */
-img[alt="Sesc TV"] { transform: scale(1.7); }
-img[alt="WSL"] { transform: scale(1.6); }
-img[alt="NBR"] { transform: scale(1.5); }
-img[alt="Universal Music"] { transform: scale(1.5); }
-img[alt="EBC"] { transform: scale(1.4); }
-img[alt="NBB"] { transform: scale(1.4); }
-img[alt="Band Sports"] { transform: scale(1.4); }
-img[alt="TVN"] { transform: scale(1.4); }
-img[alt="FIVB"] { transform: scale(1.3); }
-img[alt="Live Sports"] { transform: scale(1.3); }
-img[alt="Disney Channel"] { transform: scale(1.3); }
-img[alt="BWF"] { transform: scale(1.2); }
-img[alt="Cazé TV"] { transform: scale(1.15); }
-img[alt="DAZN"] { transform: scale(1.15); }
+img[alt="Conmebol TV"] {
+  /* 200×200 canvas, tiny centred Conmebol badge + 5 stars.
+     10% smaller than before (1.65 → 1.485). */
+  transform: scale(1.485);
+}
 
-/* Reduce padding slightly for all logos (more room) */
-.logo-img-wrap { padding: 10px; }
-@media(max-width:640px){ .logo-img-wrap { padding: 8px; } }
+/* Maximum — centralização natural via flex + object-fit */
+img[alt="Maximum"] {
+  transform: scale(1.125);
+}
+/* Maximum — padding assimétrico para compensar canvas descentralizado */
+.logo-img-wrap:has(img[alt="Maximum"]) {
+  padding: 16px 12px 16px 20px;
+}
+
+img[alt="Live Mode"] {
+  /* 1984×1112, small centred icon + text. 10% smaller (1.7 → 1.53). */
+  transform: scale(1.53);
+}
+
+img[alt="Casablanca"] {
+  transform: scale(1.25);
+}
+
+/* ── CATEGORY B: DOMINANT / VERY FULL SQUARES ── */
+/* Logos that naturally fill the entire 2048×2048 canvas or are intrinsically
+   large. A small scale‑down keeps them from visually shouting. */
+
+img[alt="RecordTV"],
+img[alt="SBT"],
+img[alt="TV Cultura"],
+img[alt="TV Brasil"],
+img[alt="TV Liberal"],
+img[alt="BWF"],
+img[alt="Futura"],
+img[alt="X1Brazil"],
+img[alt="Jungle Fight"],
+img[alt="CBBF"],
+img[alt="FCF"],
+img[alt="MTV"] {
+  transform: scale(0.85);
+}
+
+img[alt="CBF TV"] { transform: scale(1.53); }
+
+img[alt="Jangadeiro"] { transform: scale(1.063); }
+
+/* ── CATEGORY C: EXTREMELY WIDE (aspect > 3.5) ── */
+/* Rodobens, PokerStars, SporTV, YouTube, PepsiCo, ESPN, Sesc TV, WSL, NBR
+   These are geometrically thin. Scale() would crop the actual wordmark, so we
+   instead add vertical margin room and keep object-fit:contain – they are
+   visually shorter by nature, and that is fine as long as they feel centred
+   and comfortable. */
+
+.logo-img-wrap:has(img[alt="Rodobens"]),
+.logo-img-wrap:has(img[alt="PokerStars"]),
+.logo-img-wrap:has(img[alt="SporTV"]),
+.logo-img-wrap:has(img[alt="YouTube"]),
+.logo-img-wrap:has(img[alt="PepsiCo"]),
+.logo-img-wrap:has(img[alt="ESPN"]),
+.logo-img-wrap:has(img[alt="Sesc TV"]),
+.logo-img-wrap:has(img[alt="WSL"]),
+.logo-img-wrap:has(img[alt="NBR"]) {
+  /* More vertical breathing room, no scale that would crop the mark */
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+@media(max-width:640px){
+  .logo-img-wrap:has(img[alt="Rodobens"]),
+  .logo-img-wrap:has(img[alt="PokerStars"]),
+  .logo-img-wrap:has(img[alt="SporTV"]),
+  .logo-img-wrap:has(img[alt="YouTube"]),
+  .logo-img-wrap:has(img[alt="PepsiCo"]),
+  .logo-img-wrap:has(img[alt="ESPN"]),
+  .logo-img-wrap:has(img[alt="Sesc TV"]),
+  .logo-img-wrap:has(img[alt="WSL"]),
+  .logo-img-wrap:has(img[alt="NBR"]) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* ── CATEGORY D: MODERATELY WIDE (aspect 2–3.5) ── */
+/* These wordmarks fill their canvas width comfortably but leave visible
+   overhead. A mild scale brings them closer to the square logos without
+   crossing into crop territory. */
+
+img[alt="DAZN"] {
+  transform: scale(1.1);
+}
+
+img[alt="Band Sports"],
+img[alt="NBB"] {
+  transform: scale(1.15);
+}
+
+img[alt="FIVB"] {
+  transform: scale(1.1);
+}
+
+/* ── CATEGORY E: TALL LOGOS (COB, CPB, CBF) ── */
+/* These render tall & narrow in the square card. Add horizontal breathing
+   room; keep the scale as-is so they don't get vertically clipped. */
+
+.logo-img-wrap:has(img[alt="COB"]),
+.logo-img-wrap:has(img[alt="CPB"]),
+.logo-img-wrap:has(img[alt="CBF"]) {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+@media(max-width:640px){
+  .logo-img-wrap:has(img[alt="COB"]),
+  .logo-img-wrap:has(img[alt="CPB"]),
+  .logo-img-wrap:has(img[alt="CBF"]) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* ── CATEGORY F: SLIGHT TOUCH ── */
+/* Mild balance fine‑tuning for a handful of remaining logos. */
+
+img[alt="Rede Bahia"],
+img[alt="Ancine"] {
+  transform: scale(0.92);
+}
+
+img[alt="Canal UOL"] {
+  /* 1920×1080 – 1.78:1. Almost fills the card. Mild scale-down prevents
+     it looking stretched. */
+  transform: scale(0.88);
+}
+
+/* ── CATEGORY G: USER-REQUESTED FINE-TUNING ── */
+
+img[alt="TV Verdes Mares"] { transform: scale(1.300); }
+img[alt="Cazé TV"] { transform: scale(1.10); }
+img[alt="CBSb"] { transform: scale(0.95); }
+img[alt="Vôlei Brasil"] { transform: scale(0.95); }
+img[alt="Tribuna"] { transform: scale(0.95); }
+
+img[alt="RecordTV"] { transform: scale(0.935); }
+img[alt="Dream Tour"] { transform: scale(1.455); }
+img[alt="Esporte Interativo"] { transform: scale(1.365); object-position: 40% center; }
+img[alt="SportPromotion"] { transform: scale(1.232); }
+img[alt="SFT"] { transform: scale(1.265); }
+
+img[alt="Live Sports"] { transform: scale(1.888); object-position: 60% center; }
+.logo-img-wrap:has(img[alt="Live Sports"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img[alt="Comitê Paralímpico Brasileiro"] { transform: scale(1.15); }
+
+img[alt="CasaBlanca"] { transform: scale(1.513); }
+
+img[alt="TVN"] {
+  transform: scale(0.85);
+  object-position: center;
+}
+.logo-img-wrap:has(img[alt="TVN"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img[alt="EBC"] { transform: scale(1.0); }
+img[alt="Disney Channel"] { transform: scale(0.95); }
+img[alt="Universal Music"] { transform: scale(0.95); }
+
+/* X1Brazil: centralize alignment + fix left skew */
+.logo-img-wrap:has(img[alt="X1Brazil"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img[alt="X1Brazil"] {
+  transform: scale(0.85);
+  object-position: 80% center;
+  transform-origin: center center;
+}
+
 </style>
 </head>
 <body>
@@ -286,7 +453,7 @@ img[alt="DAZN"] { transform: scale(1.15); }
     </div>
     <div class="logo-grid">
       <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/cbf.png" alt="CBF" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>CBF</span>'"></div><div class="logo-name">CBF</div></div>
-      <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/cbf.png" alt="CBF TV" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>CBF TV</span>'"></div><div class="logo-name">CBF TV</div></div>
+      <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/cbf-tv.png" alt="CBF TV" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>CBF TV</span>'"></div><div class="logo-name">CBF TV</div></div>
       <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/conmebol-tv.png" alt="Conmebol TV" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>Conmebol TV</span>'"></div><div class="logo-name">Conmebol TV</div></div>
       <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/fcf.png" alt="FCF" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>FCF</span>'"></div><div class="logo-name">FCF</div></div>
       <div class="logo-card"><div class="logo-img-wrap"><img src="/images/client-logos/cbsb.png" alt="CBSb" loading="lazy" onerror="this.parentElement.innerHTML='<span class=lf>CBSb</span>'"></div><div class="logo-name">CBSb</div></div>

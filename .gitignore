@@ -1,6 +1,10 @@
 ${APPDATA}/
 *.artifact.json
-mr1al220-kindness-connect-mirror.zip
-mr4gwrua-FOTO-LOGO-OFICIAL---SF---LT-BRANCA.png
-mr4gwrus-Ft-dentro-da-UM---Fundo-do-site-overlay.jpeg
 .od-skills/
+Python/
+clientes-html-temp/
+mr*.png
+mr*.zip
+mr*.jpeg
+mr*.jpg
+mr*.webp

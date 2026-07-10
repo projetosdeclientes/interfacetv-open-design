@@ -77,5 +77,9 @@
 /images/client-logos/x1-brazil.png  /images/client-logos/x1-brazil.webp  200
 /images/client-logos/youtube.png  /images/client-logos/youtube.webp  200
 
+# Rewrites de background e logo convertidos para WebP (Lote 4)
+/images/bg-sobre-nos.jpg  /images/bg-sobre-nos.webp  200
+/assets/logo-interfacetv-kickBwjP.png  /assets/logo-interfacetv-kickBwjP.webp  200
+
 # SPA catch-all (deve vir depois das rewrites específicas)
 /*    /index.html   200

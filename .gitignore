@@ -8,3 +8,6 @@ mr*.zip
 mr*.jpeg
 mr*.jpg
 mr*.webp
+
+# Local Netlify folder
+.netlify

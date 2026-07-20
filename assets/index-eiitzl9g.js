@@ -319,24 +319,24 @@ Error generating stack: `+i.message+`
 .cat-name {
   font-size: 1rem;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: #EDEEF0;
 }
 .cat-count {
   margin-left: auto;
   font-size: 0.75rem;
   color: hsl(var(--muted-foreground));
-  background: hsl(var(--card));
+  background: #12161D;
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
 }
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 0.75rem;
+  gap: 12px;
 }
 .logo-card {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
+  background: #12161D;
+  border: 1px solid #242B36;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -350,8 +350,8 @@ Error generating stack: `+i.message+`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  height: 120px;
+  padding: 16px;
+  height: 130px;
 }
 .logo-img-wrap img {
   width: 100%;
@@ -360,11 +360,11 @@ Error generating stack: `+i.message+`
 }
 .logo-name {
   padding: 0.625rem 0.5rem;
-  border-top: 1px solid hsl(var(--border));
+  border-top: 1px solid #242B36;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: #EDEEF0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

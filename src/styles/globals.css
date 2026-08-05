@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-[12px] saturate-[1.2];
+    background-color: rgba(10, 10, 26, 0.6);
+  }
+
+  .glass-light {
+    @apply backdrop-blur-[8px] saturate-[1.1];
+    background-color: rgba(26, 26, 46, 0.5);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  }
+}

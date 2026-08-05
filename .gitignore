@@ -11,3 +11,8 @@ mr*.webp
 
 # Local Netlify folder
 .netlify
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
